@@ -7,6 +7,7 @@ import static be.swsb.coderetreat.rover.Command.LEFT;
 import static be.swsb.coderetreat.rover.Command.RIGHT;
 import static be.swsb.coderetreat.rover.Direction.*;
 import static be.swsb.coderetreat.rover.RoverTestBuilder.aRover;
+import static be.swsb.coderetreat.rover.RoverTestBuilder.defaultRover;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RoverTest {
@@ -93,6 +94,15 @@ class RoverTest {
         rover.applyCommand(RIGHT);
 
         assertThat(rover.faceDirection()).isEqualTo(SOUTH);
+    }
+
+    @Test
+    void applyCommand_GivenFacingNorth_WithInputForward_ShouldMoveUpTheYAxis() {
+        final Rover defaultRover = defaultRover();
+
+        defaultRover.applyCommand(Command.FORWARD);
+
+        assertThat(defaultRover.currentPosition()).isEqualTo(at(0, 1));
     }
 }
 

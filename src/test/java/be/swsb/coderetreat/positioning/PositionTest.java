@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static be.swsb.coderetreat.positioning.Position.at;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PositionTest {
 
@@ -18,5 +19,28 @@ class PositionTest {
     @Test
     void toString_ReturnsXandYCoordinates() {
         assertThat(at(-4, 12).toString()).isEqualTo("(-4,12)");
+    }
+
+    @Test
+    void up_MovesUpTheYAxisGivenAmountOfSteps() {
+        final Position position = at(0, 0);
+
+        assertThat(position.up(1)).isEqualTo(at(0, 1));
+    }
+
+    @Test
+    void up_WithSteps0_DoesNotMove() {
+        final Position position = at(0, 0);
+
+        assertThat(position.up(0)).isEqualTo(at(0, 0));
+    }
+
+    @Test
+    void up_CannotTakeNegativeNumbers() {
+        final Position position = at(0, 0);
+
+        assertThatThrownBy(() -> position.up(-1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("steps should not be negative");
     }
 }

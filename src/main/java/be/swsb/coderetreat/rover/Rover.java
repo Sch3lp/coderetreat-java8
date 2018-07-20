@@ -3,6 +3,7 @@ package be.swsb.coderetreat.rover;
 import be.swsb.coderetreat.positioning.Position;
 
 import static be.swsb.coderetreat.positioning.Position.at;
+import static be.swsb.coderetreat.rover.Command.FORWARD;
 import static be.swsb.coderetreat.rover.Command.LEFT;
 import static be.swsb.coderetreat.rover.Command.RIGHT;
 import static be.swsb.coderetreat.rover.Direction.*;
@@ -35,6 +36,8 @@ class Rover {
             this.faceDirection = this.faceDirection.counterClockwise();
         } else if (cmd == RIGHT) {
             this.faceDirection = this.faceDirection.clockwise();
+        } else if (cmd == FORWARD) {
+            this.currentPosition = this.currentPosition.up(1);
         }
     }
 }

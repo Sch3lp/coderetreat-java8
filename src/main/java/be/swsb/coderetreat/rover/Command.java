@@ -1,5 +1,5 @@
 package be.swsb.coderetreat.rover;
 
 public enum Command {
-    RIGHT, LEFT
+    RIGHT, FORWARD, LEFT
 }

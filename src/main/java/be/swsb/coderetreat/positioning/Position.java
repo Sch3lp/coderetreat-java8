@@ -34,4 +34,11 @@ public class Position {
     public String toString() {
         return String.format("(%s,%s)",x,y);
     }
+
+    public Position up(final int steps) {
+        if (steps < 0){
+            throw new IllegalArgumentException("steps should not be negative");
+        }
+        return at(x,y+steps);
+    }
 }
