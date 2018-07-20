@@ -14,13 +14,13 @@ enum Direction {
         this.internalNumber = internalNumber;
     }
 
-    public Direction nextClockwise() {
+    public Direction clockwise() {
         final int next = this.internalNumber + 1;
         final int nextNumber = (next <= 4) ? next : next % 4;
         return from(nextNumber);
     }
 
-    public Direction nextCounterClockwise() {
+    public Direction counterClockwise() {
         final int previous = this.internalNumber - 1;
         final int previousNumber = (previous > 0) ? previous : 4;
         return from(previousNumber);

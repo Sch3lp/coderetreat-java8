@@ -29,12 +29,6 @@ class Rover {
     }
 
     void applyCommand(final Command cmd) {
-        if (this.faceDirection == NORTH) {
-            this.faceDirection = WEST;
-        } else if (this.faceDirection == WEST) {
-            this.faceDirection = SOUTH;
-        } else if (this.faceDirection == SOUTH) {
-            this.faceDirection = EAST;
-        }
+        this.faceDirection = this.faceDirection.counterClockwise();
     }
 }

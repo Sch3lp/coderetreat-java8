@@ -8,17 +8,17 @@ class DirectionTest {
 
     @Test
     void nextClockwise_ReturnsNextDirection() {
-        assertThat(Direction.NORTH.nextClockwise()).isEqualTo(Direction.EAST);
-        assertThat(Direction.EAST.nextClockwise()).isEqualTo(Direction.SOUTH);
-        assertThat(Direction.SOUTH.nextClockwise()).isEqualTo(Direction.WEST);
-        assertThat(Direction.WEST.nextClockwise()).isEqualTo(Direction.NORTH);
+        assertThat(Direction.NORTH.clockwise()).isEqualTo(Direction.EAST);
+        assertThat(Direction.EAST.clockwise()).isEqualTo(Direction.SOUTH);
+        assertThat(Direction.SOUTH.clockwise()).isEqualTo(Direction.WEST);
+        assertThat(Direction.WEST.clockwise()).isEqualTo(Direction.NORTH);
     }
 
     @Test
     void nextCounterClockwise_ReturnsPreviousDirection() {
-        assertThat(Direction.NORTH.nextCounterClockwise()).isEqualTo(Direction.WEST);
-        assertThat(Direction.EAST.nextCounterClockwise()).isEqualTo(Direction.NORTH);
-        assertThat(Direction.SOUTH.nextCounterClockwise()).isEqualTo(Direction.EAST);
-        assertThat(Direction.WEST.nextCounterClockwise()).isEqualTo(Direction.SOUTH);
+        assertThat(Direction.NORTH.counterClockwise()).isEqualTo(Direction.WEST);
+        assertThat(Direction.EAST.counterClockwise()).isEqualTo(Direction.NORTH);
+        assertThat(Direction.SOUTH.counterClockwise()).isEqualTo(Direction.EAST);
+        assertThat(Direction.WEST.counterClockwise()).isEqualTo(Direction.SOUTH);
     }
 }
