@@ -8,8 +8,18 @@ import static be.swsb.coderetreat.rover.Direction.WEST;
 
 class Rover {
 
-    private Direction faceDirection = NORTH;
-    private Position currentPosition = at(0,0);
+    private Direction faceDirection;
+    private Position currentPosition;
+
+    public Rover() {
+        this.faceDirection = NORTH;
+        this.currentPosition = at(0, 0);
+    }
+
+    Rover(final Direction faceDirection, final Position currentPosition) {
+        this.faceDirection = faceDirection;
+        this.currentPosition = currentPosition;
+    }
 
     Direction faceDirection() {
         return this.faceDirection;
