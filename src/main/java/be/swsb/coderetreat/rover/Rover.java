@@ -4,6 +4,7 @@ import be.swsb.coderetreat.positioning.Position;
 
 import static be.swsb.coderetreat.positioning.Position.at;
 import static be.swsb.coderetreat.rover.Direction.NORTH;
+import static be.swsb.coderetreat.rover.Direction.SOUTH;
 import static be.swsb.coderetreat.rover.Direction.WEST;
 
 class Rover {
@@ -30,6 +31,10 @@ class Rover {
     }
 
     void applyCommand(final Command cmd) {
-        this.faceDirection = WEST;
+        if (this.faceDirection == NORTH) {
+            this.faceDirection = WEST;
+        } else if (this.faceDirection == WEST) {
+            this.faceDirection = SOUTH;
+        }
     }
 }
