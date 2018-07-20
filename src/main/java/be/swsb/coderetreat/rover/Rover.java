@@ -3,9 +3,7 @@ package be.swsb.coderetreat.rover;
 import be.swsb.coderetreat.positioning.Position;
 
 import static be.swsb.coderetreat.positioning.Position.at;
-import static be.swsb.coderetreat.rover.Direction.NORTH;
-import static be.swsb.coderetreat.rover.Direction.SOUTH;
-import static be.swsb.coderetreat.rover.Direction.WEST;
+import static be.swsb.coderetreat.rover.Direction.*;
 
 class Rover {
 
@@ -35,6 +33,8 @@ class Rover {
             this.faceDirection = WEST;
         } else if (this.faceDirection == WEST) {
             this.faceDirection = SOUTH;
+        } else if (this.faceDirection == SOUTH) {
+            this.faceDirection = EAST;
         }
     }
 }

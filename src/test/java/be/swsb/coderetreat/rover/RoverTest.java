@@ -3,9 +3,7 @@ package be.swsb.coderetreat.rover;
 import org.junit.jupiter.api.Test;
 
 import static be.swsb.coderetreat.positioning.Position.at;
-import static be.swsb.coderetreat.rover.Direction.NORTH;
-import static be.swsb.coderetreat.rover.Direction.SOUTH;
-import static be.swsb.coderetreat.rover.Direction.WEST;
+import static be.swsb.coderetreat.rover.Direction.*;
 import static be.swsb.coderetreat.rover.RoverTestBuilder.aRover;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,6 +37,15 @@ class RoverTest {
         rover.applyCommand(Command.LEFT);
 
         assertThat(rover.faceDirection()).isEqualTo(SOUTH);
+    }
+    
+    @Test
+    void applyCommand_GivenFacingSouth_WithInputLeft_ShouldFaceEast() {
+        final Rover rover = aRover().facing(SOUTH).at(0,0).build();
+
+        rover.applyCommand(Command.LEFT);
+
+        assertThat(rover.faceDirection()).isEqualTo(EAST);
     }
 }
 
