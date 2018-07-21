@@ -35,4 +35,14 @@ public abstract class Planet {
         return Stream.of(upperXEdge, lowerXEdge).anyMatch(position::hasForX) ||
                 Stream.of(upperYEdge, lowerYEdge).anyMatch(position::hasForY);
     }
+
+    public static Mars mars() {
+        return new Mars();
+    }
+
+    public static class Mars extends Planet {
+        private Mars() {
+            super(7, 7, -7, -7);
+        }
+    }
 }

@@ -60,7 +60,17 @@ class PlanetTest {
         assertThat(moon.isEdge(at(0, 0))).isFalse();
     }
 
-    static class Moon extends Planet {
+    @Test
+    void mars_HasEdgesAt7() {
+        final Planet.Mars mars = Planet.mars();
+
+        assertThat(mars.isEdge(at(7, 4))).isTrue();
+        assertThat(mars.isEdge(at(4, 7))).isTrue();
+        assertThat(mars.isEdge(at(-7, 1))).isTrue();
+        assertThat(mars.isEdge(at(6, -7))).isTrue();
+    }
+
+    private static class Moon extends Planet {
 
         Moon(final int upperXEdge, final int upperYEdge, final int lowerXEdge, final int lowerYEdge)  {
             super(upperXEdge, upperYEdge, lowerXEdge, lowerYEdge);
