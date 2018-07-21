@@ -2,9 +2,10 @@ package be.swsb.coderetreat.rover;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static be.swsb.coderetreat.positioning.Position.at;
-import static be.swsb.coderetreat.rover.Command.LEFT;
-import static be.swsb.coderetreat.rover.Command.RIGHT;
+import static be.swsb.coderetreat.rover.Command.*;
 import static be.swsb.coderetreat.rover.Direction.*;
 import static be.swsb.coderetreat.rover.RoverTestBuilder.aRover;
 import static be.swsb.coderetreat.rover.RoverTestBuilder.defaultRover;
@@ -100,7 +101,7 @@ class RoverTest {
     void handle_GivenFacingNorth_WithInputForward_ShouldMoveUpTheYAxis() {
         final Rover rover = defaultRover();
 
-        rover.handle(Command.FORWARD);
+        rover.handle(FORWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, 1));
     }
@@ -109,7 +110,7 @@ class RoverTest {
     void handle_GivenFacingSouth_WithInputForward_ShouldMoveDownTheYAxis() {
         final Rover rover = aRover().facing(SOUTH).at(0,0).build();
 
-        rover.handle(Command.FORWARD);
+        rover.handle(FORWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, -1));
     }
@@ -118,7 +119,7 @@ class RoverTest {
     void handle_GivenFacingEast_WithInputForward_ShouldMoveUpTheXAxis() {
         final Rover rover = aRover().facing(EAST).at(0,0).build();
 
-        rover.handle(Command.FORWARD);
+        rover.handle(FORWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(1, 0));
     }
@@ -127,7 +128,7 @@ class RoverTest {
     void handle_GivenFacingWest_WithInputForward_ShouldMoveDownTheXAxis() {
         final Rover rover = aRover().facing(WEST).at(0,0).build();
 
-        rover.handle(Command.FORWARD);
+        rover.handle(FORWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(-1, 0));
     }
@@ -136,7 +137,7 @@ class RoverTest {
     void handle_GivenFacingNorth_WithInputBackward_ShouldMoveDownTheYAxis() {
         final Rover rover = defaultRover();
 
-        rover.handle(Command.BACKWARD);
+        rover.handle(BACKWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, -1));
     }
@@ -145,7 +146,7 @@ class RoverTest {
     void handle_GivenFacingSouth_WithInputBackward_ShouldMoveUpTheYAxis() {
         final Rover rover = aRover().facing(SOUTH).at(0,0).build();
 
-        rover.handle(Command.BACKWARD);
+        rover.handle(BACKWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, 1));
     }
@@ -154,7 +155,7 @@ class RoverTest {
     void handle_GivenFacingEast_WithInputBackward_ShouldMoveDownTheXAxis() {
         final Rover rover = aRover().facing(EAST).at(0,0).build();
 
-        rover.handle(Command.BACKWARD);
+        rover.handle(BACKWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(-1, 0));
     }
@@ -163,9 +164,19 @@ class RoverTest {
     void handle_GivenFacingWest_WithInputBackward_ShouldMoveUpTheXAxis() {
         final Rover rover = aRover().facing(WEST).at(0,0).build();
 
-        rover.handle(Command.BACKWARD);
+        rover.handle(BACKWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(1, 0));
+    }
+
+    @Test
+    void handleCommands_CanHandleASeriesOfCommands() {
+        Rover rover = defaultRover();
+
+        rover.handleCommands(Arrays.asList(FORWARD,RIGHT,FORWARD,FORWARD,RIGHT,BACKWARD));
+
+        assertThat(rover.currentPosition()).isEqualTo(at(2, 2));
+        assertThat(rover.faceDirection()).isEqualTo(SOUTH);
     }
 }
 

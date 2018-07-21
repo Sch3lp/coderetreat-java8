@@ -2,6 +2,8 @@ package be.swsb.coderetreat.rover;
 
 import be.swsb.coderetreat.positioning.Position;
 
+import java.util.List;
+
 import static be.swsb.coderetreat.positioning.Position.at;
 import static be.swsb.coderetreat.rover.Command.FORWARD;
 import static be.swsb.coderetreat.rover.Command.LEFT;
@@ -29,6 +31,10 @@ class Rover {
 
     Position currentPosition() {
         return this.currentPosition;
+    }
+
+    void handleCommands(final List<Command> commands) {
+        commands.forEach(this::handle);
     }
 
     void handle(final Command cmd) {
