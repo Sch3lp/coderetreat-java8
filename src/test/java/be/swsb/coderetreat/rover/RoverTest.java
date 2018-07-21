@@ -25,145 +25,145 @@ class RoverTest {
     }
 
     @Test
-    void applyCommand_GivenFacingNorth_WithInputLeft_ShouldFaceWest() {
+    void handle_GivenFacingNorth_WithInputLeft_ShouldFaceWest() {
         final Rover defaultRover = new Rover();
 
-        defaultRover.applyCommand(LEFT);
+        defaultRover.handle(LEFT);
 
         assertThat(defaultRover.faceDirection()).isEqualTo(WEST);
     }
 
     @Test
-    void applyCommand_GivenFacingWest_WithInputLeft_ShouldFaceSouth() {
+    void handle_GivenFacingWest_WithInputLeft_ShouldFaceSouth() {
         final Rover rover = aRover().facing(WEST).at(0,0).build();
 
-        rover.applyCommand(LEFT);
+        rover.handle(LEFT);
 
         assertThat(rover.faceDirection()).isEqualTo(SOUTH);
     }
 
     @Test
-    void applyCommand_GivenFacingSouth_WithInputLeft_ShouldFaceEast() {
+    void handle_GivenFacingSouth_WithInputLeft_ShouldFaceEast() {
         final Rover rover = aRover().facing(SOUTH).at(0,0).build();
 
-        rover.applyCommand(LEFT);
+        rover.handle(LEFT);
 
         assertThat(rover.faceDirection()).isEqualTo(EAST);
     }
 
     @Test
-    void applyCommand_GivenFacingEast_WithInputLeft_ShouldFaceNorth() {
+    void handle_GivenFacingEast_WithInputLeft_ShouldFaceNorth() {
         final Rover rover = aRover().facing(EAST).at(0,0).build();
 
-        rover.applyCommand(LEFT);
+        rover.handle(LEFT);
 
         assertThat(rover.faceDirection()).isEqualTo(NORTH);
     }
 
     @Test
-    void applyCommand_GivenFacingNorth_WithInputRight_ShouldFaceEast() {
+    void handle_GivenFacingNorth_WithInputRight_ShouldFaceEast() {
         final Rover defaultRover = new Rover();
 
-        defaultRover.applyCommand(RIGHT);
+        defaultRover.handle(RIGHT);
 
         assertThat(defaultRover.faceDirection()).isEqualTo(EAST);
     }
 
     @Test
-    void applyCommand_GivenFacingWest_WithInputRight_ShouldFaceNorth() {
+    void handle_GivenFacingWest_WithInputRight_ShouldFaceNorth() {
         final Rover rover = aRover().facing(WEST).at(0,0).build();
 
-        rover.applyCommand(RIGHT);
+        rover.handle(RIGHT);
 
         assertThat(rover.faceDirection()).isEqualTo(NORTH);
     }
 
     @Test
-    void applyCommand_GivenFacingSouth_WithInputRight_ShouldFaceWest() {
+    void handle_GivenFacingSouth_WithInputRight_ShouldFaceWest() {
         final Rover rover = aRover().facing(SOUTH).at(0,0).build();
 
-        rover.applyCommand(RIGHT);
+        rover.handle(RIGHT);
 
         assertThat(rover.faceDirection()).isEqualTo(WEST);
     }
 
     @Test
-    void applyCommand_GivenFacingEast_WithInputRight_ShouldFaceSouth() {
+    void handle_GivenFacingEast_WithInputRight_ShouldFaceSouth() {
         final Rover rover = aRover().facing(EAST).at(0,0).build();
 
-        rover.applyCommand(RIGHT);
+        rover.handle(RIGHT);
 
         assertThat(rover.faceDirection()).isEqualTo(SOUTH);
     }
 
     @Test
-    void applyCommand_GivenFacingNorth_WithInputForward_ShouldMoveUpTheYAxis() {
+    void handle_GivenFacingNorth_WithInputForward_ShouldMoveUpTheYAxis() {
         final Rover rover = defaultRover();
 
-        rover.applyCommand(Command.FORWARD);
+        rover.handle(Command.FORWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, 1));
     }
 
     @Test
-    void applyCommand_GivenFacingSouth_WithInputForward_ShouldMoveDownTheYAxis() {
+    void handle_GivenFacingSouth_WithInputForward_ShouldMoveDownTheYAxis() {
         final Rover rover = aRover().facing(SOUTH).at(0,0).build();
 
-        rover.applyCommand(Command.FORWARD);
+        rover.handle(Command.FORWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, -1));
     }
 
     @Test
-    void applyCommand_GivenFacingEast_WithInputForward_ShouldMoveUpTheXAxis() {
+    void handle_GivenFacingEast_WithInputForward_ShouldMoveUpTheXAxis() {
         final Rover rover = aRover().facing(EAST).at(0,0).build();
 
-        rover.applyCommand(Command.FORWARD);
+        rover.handle(Command.FORWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(1, 0));
     }
 
     @Test
-    void applyCommand_GivenFacingWest_WithInputForward_ShouldMoveDownTheXAxis() {
+    void handle_GivenFacingWest_WithInputForward_ShouldMoveDownTheXAxis() {
         final Rover rover = aRover().facing(WEST).at(0,0).build();
 
-        rover.applyCommand(Command.FORWARD);
+        rover.handle(Command.FORWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(-1, 0));
     }
 
     @Test
-    void applyCommand_GivenFacingNorth_WithInputBackward_ShouldMoveDownTheYAxis() {
+    void handle_GivenFacingNorth_WithInputBackward_ShouldMoveDownTheYAxis() {
         final Rover rover = defaultRover();
 
-        rover.applyCommand(Command.BACKWARD);
+        rover.handle(Command.BACKWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, -1));
     }
 
     @Test
-    void applyCommand_GivenFacingSouth_WithInputBackward_ShouldMoveUpTheYAxis() {
+    void handle_GivenFacingSouth_WithInputBackward_ShouldMoveUpTheYAxis() {
         final Rover rover = aRover().facing(SOUTH).at(0,0).build();
 
-        rover.applyCommand(Command.BACKWARD);
+        rover.handle(Command.BACKWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, 1));
     }
 
     @Test
-    void applyCommand_GivenFacingEast_WithInputBackward_ShouldMoveDownTheXAxis() {
+    void handle_GivenFacingEast_WithInputBackward_ShouldMoveDownTheXAxis() {
         final Rover rover = aRover().facing(EAST).at(0,0).build();
 
-        rover.applyCommand(Command.BACKWARD);
+        rover.handle(Command.BACKWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(-1, 0));
     }
 
     @Test
-    void applyCommand_GivenFacingWest_WithInputBackward_ShouldMoveUpTheXAxis() {
+    void handle_GivenFacingWest_WithInputBackward_ShouldMoveUpTheXAxis() {
         final Rover rover = aRover().facing(WEST).at(0,0).build();
 
-        rover.applyCommand(Command.BACKWARD);
+        rover.handle(Command.BACKWARD);
 
         assertThat(rover.currentPosition()).isEqualTo(at(1, 0));
     }

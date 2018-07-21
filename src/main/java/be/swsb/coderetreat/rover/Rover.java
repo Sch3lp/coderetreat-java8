@@ -31,7 +31,7 @@ class Rover {
         return this.currentPosition;
     }
 
-    void applyCommand(final Command cmd) {
+    void handle(final Command cmd) {
         switch (cmd) {
             case LEFT:
                 this.faceDirection = this.faceDirection.counterClockwise();
@@ -53,15 +53,12 @@ class Rover {
             case NORTH:
                 this.currentPosition = this.currentPosition.up(1);
                 break;
-
             case SOUTH:
                 this.currentPosition = this.currentPosition.down(1);
                 break;
-
             case EAST:
                 this.currentPosition = this.currentPosition.right(1);
                 break;
-
             case WEST:
                 this.currentPosition = this.currentPosition.left(1);
                 break;
@@ -73,15 +70,12 @@ class Rover {
             case NORTH:
                 this.currentPosition = this.currentPosition.down(1);
                 break;
-
             case SOUTH:
                 this.currentPosition = this.currentPosition.up(1);
                 break;
-
             case EAST:
                 this.currentPosition = this.currentPosition.left(1);
                 break;
-
             case WEST:
                 this.currentPosition = this.currentPosition.right(1);
                 break;
