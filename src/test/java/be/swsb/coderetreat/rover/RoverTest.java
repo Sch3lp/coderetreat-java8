@@ -131,5 +131,41 @@ class RoverTest {
 
         assertThat(rover.currentPosition()).isEqualTo(at(-1, 0));
     }
+
+    @Test
+    void applyCommand_GivenFacingNorth_WithInputBackward_ShouldMoveDownTheYAxis() {
+        final Rover rover = defaultRover();
+
+        rover.applyCommand(Command.BACKWARD);
+
+        assertThat(rover.currentPosition()).isEqualTo(at(0, -1));
+    }
+
+    @Test
+    void applyCommand_GivenFacingSouth_WithInputBackward_ShouldMoveUpTheYAxis() {
+        final Rover rover = aRover().facing(SOUTH).at(0,0).build();
+
+        rover.applyCommand(Command.BACKWARD);
+
+        assertThat(rover.currentPosition()).isEqualTo(at(0, 1));
+    }
+
+    @Test
+    void applyCommand_GivenFacingEast_WithInputBackward_ShouldMoveDownTheXAxis() {
+        final Rover rover = aRover().facing(EAST).at(0,0).build();
+
+        rover.applyCommand(Command.BACKWARD);
+
+        assertThat(rover.currentPosition()).isEqualTo(at(-1, 0));
+    }
+
+    @Test
+    void applyCommand_GivenFacingWest_WithInputBackward_ShouldMoveUpTheXAxis() {
+        final Rover rover = aRover().facing(WEST).at(0,0).build();
+
+        rover.applyCommand(Command.BACKWARD);
+
+        assertThat(rover.currentPosition()).isEqualTo(at(1, 0));
+    }
 }
 

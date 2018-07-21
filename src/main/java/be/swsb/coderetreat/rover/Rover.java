@@ -42,6 +42,9 @@ class Rover {
             case FORWARD:
                 moveForward();
                 break;
+            case BACKWARD:
+                moveBackward();
+                break;
         }
     }
 
@@ -61,6 +64,26 @@ class Rover {
 
             case WEST:
                 this.currentPosition = this.currentPosition.left(1);
+                break;
+        }
+    }
+
+    private void moveBackward() {
+        switch (this.faceDirection) {
+            case NORTH:
+                this.currentPosition = this.currentPosition.down(1);
+                break;
+
+            case SOUTH:
+                this.currentPosition = this.currentPosition.up(1);
+                break;
+
+            case EAST:
+                this.currentPosition = this.currentPosition.left(1);
+                break;
+
+            case WEST:
+                this.currentPosition = this.currentPosition.right(1);
                 break;
         }
 
