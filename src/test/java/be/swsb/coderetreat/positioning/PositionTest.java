@@ -43,4 +43,27 @@ class PositionTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("steps should not be negative");
     }
+
+    @Test
+    void down_MovesDownTheYAxisGivenAmountOfSteps() {
+        final Position position = at(0, 0);
+
+        assertThat(position.down(1)).isEqualTo(at(0, -1));
+    }
+
+    @Test
+    void down_WithSteps0_DoesNotMove() {
+        final Position position = at(0, 0);
+
+        assertThat(position.down(0)).isEqualTo(at(0, 0));
+    }
+
+    @Test
+    void down_CannotTakeNegativeNumbers() {
+        final Position position = at(0, 0);
+
+        assertThatThrownBy(() -> position.down(-1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("steps should not be negative");
+    }
 }

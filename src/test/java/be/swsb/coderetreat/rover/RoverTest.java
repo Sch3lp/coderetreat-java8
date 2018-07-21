@@ -98,11 +98,20 @@ class RoverTest {
 
     @Test
     void applyCommand_GivenFacingNorth_WithInputForward_ShouldMoveUpTheYAxis() {
-        final Rover defaultRover = defaultRover();
+        final Rover rover = defaultRover();
 
-        defaultRover.applyCommand(Command.FORWARD);
+        rover.applyCommand(Command.FORWARD);
 
-        assertThat(defaultRover.currentPosition()).isEqualTo(at(0, 1));
+        assertThat(rover.currentPosition()).isEqualTo(at(0, 1));
+    }
+
+    @Test
+    void applyCommand_GivenFacingSouth_WithInputForward_ShouldMoveDownTheYAxis() {
+        final Rover rover = aRover().facing(SOUTH).at(0,0).build();
+
+        rover.applyCommand(Command.FORWARD);
+
+        assertThat(rover.currentPosition()).isEqualTo(at(0, -1));
     }
 }
 

@@ -37,7 +37,12 @@ class Rover {
         } else if (cmd == RIGHT) {
             this.faceDirection = this.faceDirection.clockwise();
         } else if (cmd == FORWARD) {
-            this.currentPosition = this.currentPosition.up(1);
+            if (this.faceDirection == NORTH) {
+                this.currentPosition = this.currentPosition.up(1);
+            }
+            if (this.faceDirection == SOUTH) {
+                this.currentPosition = this.currentPosition.down(1);
+            }
         }
     }
 }

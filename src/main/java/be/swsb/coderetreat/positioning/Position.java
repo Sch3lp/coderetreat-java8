@@ -12,7 +12,7 @@ public class Position {
         this.y = y;
     }
 
-    public static Position at(final int x, final int y){
+    public static Position at(final int x, final int y) {
         return new Position(x, y);
     }
 
@@ -32,13 +32,20 @@ public class Position {
 
     @Override
     public String toString() {
-        return String.format("(%s,%s)",x,y);
+        return String.format("(%s,%s)", x, y);
     }
 
     public Position up(final int steps) {
-        if (steps < 0){
+        if (steps < 0) {
             throw new IllegalArgumentException("steps should not be negative");
         }
-        return at(x,y+steps);
+        return at(x, y + steps);
+    }
+
+    public Position down(final int steps) {
+        if (steps < 0) {
+            throw new IllegalArgumentException("steps should not be negative");
+        }
+        return at(x, y - steps);
     }
 }
