@@ -62,4 +62,12 @@ public class Position {
         }
         return at(x - steps , y);
     }
+
+    public boolean hasForX(final int x) {
+        return this.x == x;
+    }
+
+    public boolean hasForY(final int y) {
+        return this.y == y;
+    }
 }
