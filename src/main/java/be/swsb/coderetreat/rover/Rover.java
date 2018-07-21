@@ -32,23 +32,37 @@ class Rover {
     }
 
     void applyCommand(final Command cmd) {
-        if (cmd == LEFT) {
-            this.faceDirection = this.faceDirection.counterClockwise();
-        } else if (cmd == RIGHT) {
-            this.faceDirection = this.faceDirection.clockwise();
-        } else if (cmd == FORWARD) {
-            if (this.faceDirection == NORTH) {
-                this.currentPosition = this.currentPosition.up(1);
-            }
-            if (this.faceDirection == SOUTH) {
-                this.currentPosition = this.currentPosition.down(1);
-            }
-            if (this.faceDirection == EAST) {
-                this.currentPosition = this.currentPosition.right(1);
-            }
-            if (this.faceDirection == WEST) {
-                this.currentPosition = this.currentPosition.left(1);
-            }
+        switch (cmd) {
+            case LEFT:
+                this.faceDirection = this.faceDirection.counterClockwise();
+                break;
+            case RIGHT:
+                this.faceDirection = this.faceDirection.clockwise();
+                break;
+            case FORWARD:
+                moveForward();
+                break;
         }
+    }
+
+    private void moveForward() {
+        switch (this.faceDirection) {
+            case NORTH:
+                this.currentPosition = this.currentPosition.up(1);
+                break;
+
+            case SOUTH:
+                this.currentPosition = this.currentPosition.down(1);
+                break;
+
+            case EAST:
+                this.currentPosition = this.currentPosition.right(1);
+                break;
+
+            case WEST:
+                this.currentPosition = this.currentPosition.left(1);
+                break;
+        }
+
     }
 }
