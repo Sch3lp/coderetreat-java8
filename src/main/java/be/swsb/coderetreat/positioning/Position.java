@@ -48,4 +48,18 @@ public class Position {
         }
         return at(x, y - steps);
     }
+
+    public Position right(final int steps) {
+        if (steps < 0) {
+            throw new IllegalArgumentException("steps should not be negative");
+        }
+        return at(x + steps, y);
+    }
+
+    public Position left(final int steps) {
+        if (steps < 0) {
+            throw new IllegalArgumentException("steps should not be negative");
+        }
+        return at(x - steps , y);
+    }
 }

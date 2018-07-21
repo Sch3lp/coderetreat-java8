@@ -66,4 +66,51 @@ class PositionTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("steps should not be negative");
     }
+
+
+    @Test
+    void right_MovesUpTheXAxisGivenAmountOfSteps() {
+        final Position position = at(0, 0);
+
+        assertThat(position.right(1)).isEqualTo(at(1, 0));
+    }
+
+    @Test
+    void right_WithSteps0_DoesNotMove() {
+        final Position position = at(0, 0);
+
+        assertThat(position.right(0)).isEqualTo(at(0, 0));
+    }
+
+    @Test
+    void right_CannotTakeNegativeNumbers() {
+        final Position position = at(0, 0);
+
+        assertThatThrownBy(() -> position.right(-1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("steps should not be negative");
+    }
+
+    @Test
+    void left_MovesDownTheXAxisGivenAmountOfSteps() {
+        final Position position = at(0, 0);
+
+        assertThat(position.left(1)).isEqualTo(at(-1, 0));
+    }
+
+    @Test
+    void left_WithSteps0_DoesNotMove() {
+        final Position position = at(0, 0);
+
+        assertThat(position.left(0)).isEqualTo(at(0, 0));
+    }
+
+    @Test
+    void left_CannotTakeNegativeNumbers() {
+        final Position position = at(0, 0);
+
+        assertThatThrownBy(() -> position.down(-1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("steps should not be negative");
+    }
 }

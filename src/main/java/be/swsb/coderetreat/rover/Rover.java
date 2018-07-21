@@ -43,6 +43,12 @@ class Rover {
             if (this.faceDirection == SOUTH) {
                 this.currentPosition = this.currentPosition.down(1);
             }
+            if (this.faceDirection == EAST) {
+                this.currentPosition = this.currentPosition.right(1);
+            }
+            if (this.faceDirection == WEST) {
+                this.currentPosition = this.currentPosition.left(1);
+            }
         }
     }
 }
