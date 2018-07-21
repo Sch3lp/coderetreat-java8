@@ -1,5 +1,6 @@
 package be.swsb.coderetreat.rover;
 
+import be.swsb.coderetreat.planet.Planet;
 import be.swsb.coderetreat.positioning.Position;
 
 import java.util.List;
@@ -14,15 +15,18 @@ class Rover {
 
     private Direction faceDirection;
     private Position currentPosition;
+    private final Planet planet;
 
     public Rover() {
         this.faceDirection = NORTH;
         this.currentPosition = at(0, 0);
+        this.planet = Planet.mars();
     }
 
-    Rover(final Direction faceDirection, final Position currentPosition) {
+    Rover(final Direction faceDirection, final Position currentPosition, final Planet planet) {
         this.faceDirection = faceDirection;
         this.currentPosition = currentPosition;
+        this.planet = planet;
     }
 
     Direction faceDirection() {
@@ -31,6 +35,10 @@ class Rover {
 
     Position currentPosition() {
         return this.currentPosition;
+    }
+
+    Planet planet() {
+        return this.planet;
     }
 
     void handleCommands(final List<Command> commands) {

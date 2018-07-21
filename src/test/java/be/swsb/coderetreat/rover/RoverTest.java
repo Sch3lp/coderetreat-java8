@@ -1,5 +1,6 @@
 package be.swsb.coderetreat.rover;
 
+import be.swsb.coderetreat.planet.Planet;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -23,6 +24,12 @@ class RoverTest {
     void constructor_ShouldCreateARoverAtPosition00() {
         final Rover defaultRover = new Rover();
         assertThat(defaultRover.currentPosition()).isEqualTo(at(0,0));
+    }
+
+    @Test
+    void constructor_ShouldCreateARoverOnMars() {
+        final Rover defaultRover = new Rover();
+        assertThat(defaultRover.planet()).isEqualTo(Planet.mars());
     }
 
     @Test
@@ -177,6 +184,11 @@ class RoverTest {
 
         assertThat(rover.currentPosition()).isEqualTo(at(2, 2));
         assertThat(rover.faceDirection()).isEqualTo(SOUTH);
+    }
+
+    @Test
+    void movingNorthOfUpperYEdge_WrapsToLowerYEdge() {
+        Rover rover = aRover().facing(NORTH).at(0, 7).on(Planet.mars()).build();
     }
 }
 
