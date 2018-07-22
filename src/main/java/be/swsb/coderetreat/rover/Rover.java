@@ -16,9 +16,7 @@ class Rover {
     private final Planet planet;
 
     public Rover() {
-        this.faceDirection = NORTH;
-        this.currentPosition = at(0, 0);
-        this.planet = Planet.mars();
+        this(NORTH, at(0, 0), Planet.mars());
     }
 
     Rover(final Direction faceDirection, final Position currentPosition, final Planet planet) {
