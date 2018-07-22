@@ -13,7 +13,7 @@ public abstract class Planet {
     private final int lowerYEdge;
     private final String name;
 
-    Planet(final int upperXEdge, final int upperYEdge, final int lowerXEdge, final int lowerYEdge, final String name) {
+    Planet(final String name, final int upperXEdge, final int upperYEdge, final int lowerXEdge, final int lowerYEdge) {
         validateEdges(upperXEdge, upperYEdge, lowerXEdge, lowerYEdge);
         this.upperXEdge = upperXEdge;
         this.upperYEdge = upperYEdge;
@@ -34,7 +34,7 @@ public abstract class Planet {
         }
     }
 
-    public boolean isEdge(final Position position) {
+    boolean isEdge(final Position position) {
         return Stream.of(upperXEdge, lowerXEdge).anyMatch(position::hasForX) ||
                 Stream.of(upperYEdge, lowerYEdge).anyMatch(position::hasForY);
     }
@@ -61,7 +61,7 @@ public abstract class Planet {
 
     public static class Mars extends Planet {
         private Mars() {
-            super(7, 7, -7, -7, "Mars");
+            super("Mars", 7, 7, -7, -7);
         }
     }
 

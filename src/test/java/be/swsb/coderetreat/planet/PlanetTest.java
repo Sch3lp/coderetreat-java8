@@ -124,7 +124,7 @@ class PlanetTest {
 
         assertThat(actual).isEqualTo(topEdge);
     }
-    
+
     @Test
     void wrap_WhenGivenPositionIsOnEdge_ReturnPosition() {
         final Position onRightEdge = at(7, 4);
@@ -149,7 +149,7 @@ class PlanetTest {
 
     private static class Moon extends Planet {
         Moon(final int upperXEdge, final int upperYEdge, final int lowerXEdge, final int lowerYEdge, String name)  {
-            super(upperXEdge, upperYEdge, lowerXEdge, lowerYEdge, name);
+            super(name, upperXEdge, upperYEdge, lowerXEdge, lowerYEdge);
         }
     }
 
