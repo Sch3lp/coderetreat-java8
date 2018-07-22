@@ -194,5 +194,14 @@ class RoverTest {
 
         assertThat(rover.currentPosition()).isEqualTo(at(0, -7));
     }
+
+    @Test
+    void commandsThatLeadToWrapping_Wraps() {
+        Rover rover = aRover().facing(EAST).at(5, 5).on(Planet.mars()).build();
+
+        rover.handleCommands(Arrays.asList(FORWARD,FORWARD,FORWARD,FORWARD));
+
+        assertThat(rover.currentPosition()).isEqualTo(at(-6, 5));
+    }
 }
 
