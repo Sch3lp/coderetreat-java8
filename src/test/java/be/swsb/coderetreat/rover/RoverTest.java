@@ -189,6 +189,10 @@ class RoverTest {
     @Test
     void movingNorthOfUpperYEdge_WrapsToLowerYEdge() {
         Rover rover = aRover().facing(NORTH).at(0, 7).on(Planet.mars()).build();
+
+        rover.handle(FORWARD);
+
+        assertThat(rover.currentPosition()).isEqualTo(at(0, -7));
     }
 }
 

@@ -1,5 +1,6 @@
 package be.swsb.coderetreat.planet;
 
+import be.swsb.coderetreat.positioning.Position;
 import org.junit.jupiter.api.Test;
 
 import static be.swsb.coderetreat.positioning.Position.at;
@@ -82,6 +83,68 @@ class PlanetTest {
         assertThat(mars.isEdge(at(4, 7))).isTrue();
         assertThat(mars.isEdge(at(-7, 1))).isTrue();
         assertThat(mars.isEdge(at(6, -7))).isTrue();
+    }
+
+    @Test
+    void wrap_WhenGivenPositionIsOverRightEdge_ReturnLeftEdge() {
+        final Position overRightEdge = at(8, 4);
+        final Position leftEdge = at(-7, 4);
+
+        final Position actual = Planet.mars().wrap(overRightEdge);
+
+        assertThat(actual).isEqualTo(leftEdge);
+    }
+
+    @Test
+    void wrap_WhenGivenPositionIsOverLeftEdge_ReturnRightEdge() {
+        final Position overLeftEdge = at(-8, 4);
+        final Position rightEdge = at(7, 4);
+
+        final Position actual = Planet.mars().wrap(overLeftEdge);
+
+        assertThat(actual).isEqualTo(rightEdge);
+    }
+
+    @Test
+    void wrap_WhenGivenPositionIsOverTopEdge_ReturnBottomEdge() {
+        final Position overTopEdge = at(4, 8);
+        final Position bottomEdge = at(4, -7);
+
+        final Position actual = Planet.mars().wrap(overTopEdge);
+
+        assertThat(actual).isEqualTo(bottomEdge);
+    }
+
+    @Test
+    void wrap_WhenGivenPositionIsOverBottomEdge_ReturnTopEdge() {
+        final Position overBottomEdge = at(4, -8);
+        final Position topEdge = at(4, 7);
+
+        final Position actual = Planet.mars().wrap(overBottomEdge);
+
+        assertThat(actual).isEqualTo(topEdge);
+    }
+    
+    @Test
+    void wrap_WhenGivenPositionIsOnEdge_ReturnPosition() {
+        final Position onRightEdge = at(7, 4);
+        final Position onLeftEdge = at(-7, 4);
+        final Position onTopEdge = at(4, 7);
+        final Position onBottomEdge = at(4, -7);
+
+        assertThat(Planet.mars().wrap(onRightEdge)).isEqualTo(onRightEdge);
+        assertThat(Planet.mars().wrap(onLeftEdge)).isEqualTo(onLeftEdge);
+        assertThat(Planet.mars().wrap(onTopEdge)).isEqualTo(onTopEdge);
+        assertThat(Planet.mars().wrap(onBottomEdge)).isEqualTo(onBottomEdge);
+    }
+
+    @Test
+    void wrap_WhenGivenPositionIsNotOnEdge_ReturnPosition() {
+        final Position noEdge = at(1, 4);
+
+        final Position actual = Planet.mars().wrap(noEdge);
+
+        assertThat(actual).isEqualTo(noEdge);
     }
 
     private static class Moon extends Planet {

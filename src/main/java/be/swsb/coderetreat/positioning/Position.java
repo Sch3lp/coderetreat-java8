@@ -70,4 +70,28 @@ public class Position {
     public boolean hasForY(final int y) {
         return this.y == y;
     }
+
+    public boolean xLargerThan(final int x) {
+        return this.x > x;
+    }
+
+    public boolean xSmallerThan(final int x) {
+        return this.x < x;
+    }
+
+    public boolean yLargerThan(final int y) {
+        return this.y > y;
+    }
+
+    public boolean ySmallerThan(final int y) {
+        return this.y < y;
+    }
+
+    public Position withX(final int x) {
+        return at(x, this.y);
+    }
+
+    public Position withY(final int y) {
+        return at(this.x, y);
+    }
 }

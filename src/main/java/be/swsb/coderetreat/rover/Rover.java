@@ -6,10 +6,7 @@ import be.swsb.coderetreat.positioning.Position;
 import java.util.List;
 
 import static be.swsb.coderetreat.positioning.Position.at;
-import static be.swsb.coderetreat.rover.Command.FORWARD;
-import static be.swsb.coderetreat.rover.Command.LEFT;
-import static be.swsb.coderetreat.rover.Command.RIGHT;
-import static be.swsb.coderetreat.rover.Direction.*;
+import static be.swsb.coderetreat.rover.Direction.NORTH;
 
 class Rover {
 
@@ -63,20 +60,27 @@ class Rover {
     }
 
     private void moveForward() {
+        Position newPosition = this.currentPosition;
         switch (this.faceDirection) {
             case NORTH:
-                this.currentPosition = this.currentPosition.up(1);
+                newPosition = this.currentPosition.up(1);
                 break;
             case SOUTH:
-                this.currentPosition = this.currentPosition.down(1);
+                newPosition = this.currentPosition.down(1);
                 break;
             case EAST:
-                this.currentPosition = this.currentPosition.right(1);
+                newPosition = this.currentPosition.right(1);
                 break;
             case WEST:
-                this.currentPosition = this.currentPosition.left(1);
+                newPosition = this.currentPosition.left(1);
                 break;
         }
+
+        this.currentPosition = wrapIfNecessary(newPosition);
+    }
+
+    private Position wrapIfNecessary(final Position newPosition) {
+        return planet != null ? planet.wrap(newPosition) : newPosition;
     }
 
     private void moveBackward() {
@@ -94,6 +98,5 @@ class Rover {
                 this.currentPosition = this.currentPosition.right(1);
                 break;
         }
-
     }
 }

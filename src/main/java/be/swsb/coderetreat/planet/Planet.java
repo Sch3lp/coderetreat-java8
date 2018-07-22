@@ -43,6 +43,22 @@ public abstract class Planet {
         return new Mars();
     }
 
+    public Position wrap(final Position position) {
+        if (position.xLargerThan(upperXEdge)) {
+            return position.withX(lowerXEdge);
+        }
+        if (position.xSmallerThan(lowerXEdge)) {
+            return position.withX(upperXEdge);
+        }
+        if (position.yLargerThan(upperYEdge)) {
+            return position.withY(lowerYEdge);
+        }
+        if (position.ySmallerThan(lowerYEdge)) {
+            return position.withY(upperYEdge);
+        }
+        return position;
+    }
+
     public static class Mars extends Planet {
         private Mars() {
             super(7, 7, -7, -7, "Mars");
