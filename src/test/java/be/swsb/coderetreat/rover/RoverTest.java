@@ -8,7 +8,7 @@ import java.util.Arrays;
 import static be.swsb.coderetreat.positioning.Position.at;
 import static be.swsb.coderetreat.rover.Command.*;
 import static be.swsb.coderetreat.rover.Direction.*;
-import static be.swsb.coderetreat.rover.RoverTestBuilder.aRover;
+import static be.swsb.coderetreat.rover.RoverTestBuilder.aMarsRover;
 import static be.swsb.coderetreat.rover.RoverTestBuilder.defaultRover;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -43,7 +43,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingWest_WithInputLeft_ShouldFaceSouth() {
-        final Rover rover = aRover().facing(WEST).at(0,0).build();
+        final Rover rover = aMarsRover().facing(WEST).at(0,0).build();
 
         rover.handle(LEFT);
 
@@ -52,7 +52,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingSouth_WithInputLeft_ShouldFaceEast() {
-        final Rover rover = aRover().facing(SOUTH).at(0,0).build();
+        final Rover rover = aMarsRover().facing(SOUTH).at(0,0).build();
 
         rover.handle(LEFT);
 
@@ -61,7 +61,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingEast_WithInputLeft_ShouldFaceNorth() {
-        final Rover rover = aRover().facing(EAST).at(0,0).build();
+        final Rover rover = aMarsRover().facing(EAST).at(0,0).build();
 
         rover.handle(LEFT);
 
@@ -79,7 +79,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingWest_WithInputRight_ShouldFaceNorth() {
-        final Rover rover = aRover().facing(WEST).at(0,0).build();
+        final Rover rover = aMarsRover().facing(WEST).at(0,0).build();
 
         rover.handle(RIGHT);
 
@@ -88,7 +88,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingSouth_WithInputRight_ShouldFaceWest() {
-        final Rover rover = aRover().facing(SOUTH).at(0,0).build();
+        final Rover rover = aMarsRover().facing(SOUTH).at(0,0).build();
 
         rover.handle(RIGHT);
 
@@ -97,7 +97,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingEast_WithInputRight_ShouldFaceSouth() {
-        final Rover rover = aRover().facing(EAST).at(0,0).build();
+        final Rover rover = aMarsRover().facing(EAST).at(0,0).build();
 
         rover.handle(RIGHT);
 
@@ -115,7 +115,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingSouth_WithInputForward_ShouldMoveDownTheYAxis() {
-        final Rover rover = aRover().facing(SOUTH).at(0,0).build();
+        final Rover rover = aMarsRover().facing(SOUTH).at(0,0).build();
 
         rover.handle(FORWARD);
 
@@ -124,7 +124,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingEast_WithInputForward_ShouldMoveUpTheXAxis() {
-        final Rover rover = aRover().facing(EAST).at(0,0).build();
+        final Rover rover = aMarsRover().facing(EAST).at(0,0).build();
 
         rover.handle(FORWARD);
 
@@ -133,7 +133,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingWest_WithInputForward_ShouldMoveDownTheXAxis() {
-        final Rover rover = aRover().facing(WEST).at(0,0).build();
+        final Rover rover = aMarsRover().facing(WEST).at(0,0).build();
 
         rover.handle(FORWARD);
 
@@ -151,7 +151,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingSouth_WithInputBackward_ShouldMoveUpTheYAxis() {
-        final Rover rover = aRover().facing(SOUTH).at(0,0).build();
+        final Rover rover = aMarsRover().facing(SOUTH).at(0,0).build();
 
         rover.handle(BACKWARD);
 
@@ -160,7 +160,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingEast_WithInputBackward_ShouldMoveDownTheXAxis() {
-        final Rover rover = aRover().facing(EAST).at(0,0).build();
+        final Rover rover = aMarsRover().facing(EAST).at(0,0).build();
 
         rover.handle(BACKWARD);
 
@@ -169,7 +169,7 @@ class RoverTest {
 
     @Test
     void handle_GivenFacingWest_WithInputBackward_ShouldMoveUpTheXAxis() {
-        final Rover rover = aRover().facing(WEST).at(0,0).build();
+        final Rover rover = aMarsRover().facing(WEST).at(0,0).build();
 
         rover.handle(BACKWARD);
 
@@ -188,7 +188,7 @@ class RoverTest {
 
     @Test
     void movingNorthOfUpperYEdge_WrapsToLowerYEdge() {
-        Rover rover = aRover().facing(NORTH).at(0, 7).on(Planet.mars()).build();
+        Rover rover = aMarsRover().facing(NORTH).at(0, 7).on(Planet.mars()).build();
 
         rover.handle(FORWARD);
 
@@ -197,7 +197,7 @@ class RoverTest {
 
     @Test
     void commandsThatLeadToWrapping_Wraps() {
-        Rover rover = aRover().facing(EAST).at(5, 5).on(Planet.mars()).build();
+        Rover rover = aMarsRover().facing(EAST).at(5, 5).on(Planet.mars()).build();
 
         rover.handleCommands(Arrays.asList(FORWARD,FORWARD,FORWARD,FORWARD));
 

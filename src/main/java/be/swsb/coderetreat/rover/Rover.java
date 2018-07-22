@@ -4,6 +4,7 @@ import be.swsb.coderetreat.planet.Planet;
 import be.swsb.coderetreat.positioning.Position;
 
 import java.util.List;
+import java.util.Objects;
 
 import static be.swsb.coderetreat.positioning.Position.at;
 import static be.swsb.coderetreat.rover.Direction.NORTH;
@@ -21,6 +22,9 @@ class Rover {
     }
 
     Rover(final Direction faceDirection, final Position currentPosition, final Planet planet) {
+        Objects.requireNonNull(currentPosition, "position was not given");
+        Objects.requireNonNull(faceDirection, "face direction was not given");
+        Objects.requireNonNull(planet, "planet was not given");
         this.faceDirection = faceDirection;
         this.currentPosition = currentPosition;
         this.planet = planet;
@@ -80,7 +84,7 @@ class Rover {
     }
 
     private Position wrapIfNecessary(final Position newPosition) {
-        return planet != null ? planet.wrap(newPosition) : newPosition;
+        return planet.wrap(newPosition);
     }
 
     private void moveBackward() {

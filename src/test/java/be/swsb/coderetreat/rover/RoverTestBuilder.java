@@ -3,8 +3,6 @@ package be.swsb.coderetreat.rover;
 import be.swsb.coderetreat.planet.Planet;
 import be.swsb.coderetreat.positioning.Position;
 
-import java.util.Objects;
-
 class RoverTestBuilder {
     private Direction faceDirection;
     private Position position;
@@ -17,8 +15,8 @@ class RoverTestBuilder {
         return new Rover();
     }
 
-    public static RoverTestBuilder aRover() {
-        return new RoverTestBuilder();
+    public static RoverTestBuilder aMarsRover() {
+        return new RoverTestBuilder().on(Planet.mars());
     }
 
     public RoverTestBuilder facing(Direction faceDirection) {
@@ -37,8 +35,6 @@ class RoverTestBuilder {
     }
 
     public Rover build() {
-        Objects.requireNonNull(position, "position was not given");
-        Objects.requireNonNull(faceDirection, "face direction was not given");
         return new Rover(faceDirection, position, planet);
     }
 }
